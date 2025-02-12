@@ -27,6 +27,3 @@ INSERT INTO customer_relatives (customer_id1, customer_id2, relationship) VALUES
 (3, 1, 'Grand Son'),
 (2, 3, 'Father'),
 (1, 3, 'Grand Father');
-
-EXEC sys.sp_cdc_enable_table @source_schema = 'dbo', @source_name = 'customer', @role_name = NULL, @supports_net_changes = 0;
-EXEC sys.sp_cdc_enable_table @source_schema = 'dbo', @source_name = 'customer_relatives', @role_name = NULL, @supports_net_changes = 0;

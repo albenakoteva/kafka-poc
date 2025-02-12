@@ -76,6 +76,10 @@ services:
       - -c
       - |
         echo "Installing Connector"
+        # MS SQL
+        cd /usr/share/java/kafka-connect-jdbc/
+        # See https://mvnrepository.com/artifact/com.microsoft.sqlserver/mssql-jdbc/7.0.0.jre8
+        curl https://repo1.maven.org/maven2/com/microsoft/sqlserver/mssql-jdbc/7.0.0.jre8/mssql-jdbc-7.0.0.jre8.jar --output mssql-jdbc-7.0.0.jre8.jar
         confluent-hub install --no-prompt debezium/debezium-connector-sqlserver:2.4.2
         #confluent-hub install --no-prompt confluentinc/kafka-connect-azure-blob-storage:1.6.13
         #

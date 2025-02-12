@@ -110,7 +110,6 @@ services:
     container_name: ksqldb-cli
     depends_on:
       - broker
-      - connect
       - ksqldb-server
     entrypoint: /bin/sh
     tty: true
@@ -123,7 +122,6 @@ services:
       - ksqldb-server
       - broker
       - schema-registry
-      - connect
     command: "bash -c 'echo Waiting for Kafka to be ready... && \
                        cub kafka-ready -b broker:29092 1 40 && \
                        echo Waiting for Confluent Schema Registry to be ready... && \

@@ -151,7 +151,7 @@ services:
       KAFKA_REST_SCHEMA_REGISTRY_URL: 'http://schema-registry:8081'
 
   kafkacat:
-    image: edenhill/kafkacat:latest
+    image: edenhill/kafkacat:1.6.0
     container_name: kafkacat
     entrypoint: 
       - /bin/sh 

@@ -17,4 +17,4 @@
         "schema.history.internal.kafka.bootstrap.servers": "broker:29092",  
         "schema.history.internal.kafka.topic": "schema-changes.inventory",
         "database.trustServerCertificate": false  } 
-    }
+}

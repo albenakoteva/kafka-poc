@@ -9,8 +9,7 @@
       "azblob.account.key": "${AZ_BLOB_ACCOUNT_KEY}",
       "azblob.container.name": "${AZ_BLOB_CONTAINER_NAME}",
       "format.class": "io.confluent.connect.azure.blob.format.avro.AvroFormat",
-      "confluent.license": "",
-      "confluent.topic.bootstrap.servers": "localhost:9092",
+      "confluent.topic.bootstrap.servers": "broker:29092",
       "confluent.topic.replication.factor": "1"
     }
   }

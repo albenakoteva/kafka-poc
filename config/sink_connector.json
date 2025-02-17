@@ -3,12 +3,12 @@
     "config": {
       "connector.class": "io.confluent.connect.azure.blob.AzureBlobStorageSinkConnector",
       "tasks.max": "1",
-      "topics": "mssql-source.sqldb.dbo.customers",
-      "flush.size": "3",
+      "topics": "mssql-source.sqldb.dbo.customers, mssql-source.sqldb.dbo.orders",
+      "flush.size": "1",
       "azblob.account.name": "${AZ_BLOB_ACCOUNT_NAME}",
       "azblob.account.key": "${AZ_BLOB_ACCOUNT_KEY}",
       "azblob.container.name": "${AZ_BLOB_CONTAINER_NAME}",
-      "format.class": "io.confluent.connect.azure.blob.format.avro.AvroFormat",
+      "format.class": "io.confluent.connect.azure.blob.format.json.JsonFormat",
       "confluent.topic.bootstrap.servers": "broker:29092",
       "confluent.topic.replication.factor": "1"
     }

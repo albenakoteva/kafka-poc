@@ -1,5 +1,5 @@
 {
-    "name": "sink-blob-time-partitioner",
+    "name": "sink-blob-field-partitioner",
     "config": {
       "connector.class": "io.confluent.connect.azure.blob.AzureBlobStorageSinkConnector",
       "tasks.max": "1",
@@ -7,13 +7,17 @@
       "flush.size": "1",
       "azblob.account.name": "${AZ_BLOB_ACCOUNT_NAME}",
       "azblob.account.key": "${AZ_BLOB_ACCOUNT_KEY}",
-      "azblob.container.name": "${AZ_BLOB_CONTAINER_NAME}",
+      "azblob.container.name": "sink-data-field",
       "format.class": "io.confluent.connect.azure.blob.format.json.JsonFormat",
       "behavior.on.null.values": "ignore",
       "partitioner.class": "io.confluent.connect.storage.partitioner.HourlyPartitioner",
       "partition.duration.ms": "60000",
       "locale": "de_AT",
       "timezone": "UTC",
+      "timestamp.extractor": "RecordField",
+      "timestamp.field": "created_at",
+      "value.converter": "org.apache.kafka.connect.json.JsonConverter",
+      "key.converter": "org.apache.kafka.connect.storage.StringConverter",
       "confluent.topic.bootstrap.servers": "broker:29092",
       "confluent.topic.replication.factor": "1"
     }

@@ -12,10 +12,6 @@
       "behavior.on.null.values": "ignore",
       "partitioner.class": "io.confluent.connect.storage.partitioner.HourlyPartitioner",
       "partition.duration.ms": "60000",
-      "locale": "de_AT",
-      "timezone": "UTC",
-      "timestamp.extractor": "RecordField",
-      "timestamp.field": "created_at",
       "confluent.topic.bootstrap.servers": "broker:29092",
       "confluent.topic.replication.factor": "1"
     }

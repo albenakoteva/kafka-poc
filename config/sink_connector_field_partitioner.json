@@ -13,6 +13,7 @@
       "partitioner.class": "io.confluent.connect.storage.partitioner.FieldPartitioner",
       "partition.field.name": "customer_id",
       "key.converter": "org.apache.kafka.connect.storage.StringConverter",
+      "key.converter.schemas.enable": "true",
       "confluent.topic.bootstrap.servers": "broker:29092",
       "confluent.topic.replication.factor": "1"
     }

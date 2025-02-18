@@ -9,7 +9,7 @@
         "database.dbname": "${MSSQL_DB_NAME}", 
         "database.names": "${MSSQL_DB_NAME}",
         "database.server.name": "${MSSQL_DB_HOST}", 
-        "table.whitelist": "dbo.customer", 
+        "table.include.list": "dbo.customer, dbo.orders", 
         "topic.prefix": "mssql-source",
         "database.history.kafka.bootstrap.servers": "broker:29092", 
         "database.history.kafka.topic": "schema-changes-topic",

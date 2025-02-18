@@ -12,9 +12,9 @@
         "table.whitelist": "dbo.customer", 
         "topic.prefix": "mssql-source",
         "database.history.kafka.bootstrap.servers": "broker:29092", 
-        "database.history.kafka.topic": "mssql-source.schema-changes",
+        "database.history.kafka.topic": "schema-changes-topic",
         "errors.log.enable": "true",
         "schema.history.internal.kafka.bootstrap.servers": "broker:29092",  
-        "schema.history.internal.kafka.topic": "mssql-source.schema-changes.inventory",
+        "schema.history.internal.kafka.topic": "schema-changes.inventory",
         "database.trustServerCertificate": false  } 
 }

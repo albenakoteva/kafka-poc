@@ -15,5 +15,11 @@
         "errors.log.enable": "true",
         "schema.history.internal.kafka.bootstrap.servers": "broker:29092",  
         "schema.history.internal.kafka.topic": "schema-changes.inventory",
-        "database.trustServerCertificate": false  } 
+        "database.trustServerCertificate": false,
+        "value.converter": "org.apache.kafka.connect.json.JsonConverter",
+        "value.converter.schemas.enable": "false",
+        "key.converter": "org.apache.kafka.connect.json.JsonConverter",
+        "key.converter.schemas.enable": "false",
+        "transforms": "unwrap,addTopicPrefix",
+        "transforms.unwrap.type": "io.debezium.transforms.UnwrapFromEnvelope"  } 
 }

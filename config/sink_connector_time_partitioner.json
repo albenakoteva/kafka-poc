@@ -7,7 +7,7 @@
       "flush.size": "1",
       "azblob.account.name": "${AZ_BLOB_ACCOUNT_NAME}",
       "azblob.account.key": "${AZ_BLOB_ACCOUNT_KEY}",
-      "azblob.container.name": "${AZ_BLOB_CONTAINER_NAME}",
+      "azblob.container.name": "sink-data-time",
       "format.class": "io.confluent.connect.azure.blob.format.json.JsonFormat",
       "behavior.on.null.values": "ignore",
       "partitioner.class": "io.confluent.connect.storage.partitioner.HourlyPartitioner",

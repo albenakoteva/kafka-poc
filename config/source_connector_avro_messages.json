@@ -2,6 +2,7 @@
     "name": "source-mssql-avro", 
     "config": { 
         "connector.class": "io.debezium.connector.sqlserver.SqlServerConnector",
+
         "database.hostname": "${MSSQL_DB_HOST}", 
         "database.port": "1433", 
         "database.user": "${MSSQL_DB_USER}",
@@ -9,11 +10,14 @@
         "database.dbname": "${MSSQL_DB_NAME}", 
         "database.names": "${MSSQL_DB_NAME}",
         "database.server.name": "${MSSQL_DB_HOST}", 
+        "database.trustServerCertificate": false,
+
+        "decimal.handling.mode": "double",
+
         "topic.prefix": "mssql-source-avro",
         "database.history.kafka.bootstrap.servers": "broker:29092", 
         "database.history.kafka.topic": "schema-changes-topic",
         "errors.log.enable": "true",
         "schema.history.internal.kafka.bootstrap.servers": "broker:29092",  
-        "schema.history.internal.kafka.topic": "schema-changes.inventory",
-        "database.trustServerCertificate": false  } 
+        "schema.history.internal.kafka.topic": "schema-changes.inventory" } 
 }

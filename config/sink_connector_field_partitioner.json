@@ -1,5 +1,5 @@
 {
-    "name": "sink-field-partitioner-from-avro",
+    "name": "sink-field-partitioner",
     "config": {
       "connector.class": "io.confluent.connect.azure.blob.AzureBlobStorageSinkConnector",
 

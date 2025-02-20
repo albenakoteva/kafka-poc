@@ -21,6 +21,7 @@
 
         "table.include.list": "dbo.customers,dbo.orders",
         "decimal.handling.mode": "double",
+        "time.precision.mode": "connect",
 
         "transforms": "unwrap",
         "transforms.unwrap.type": "io.debezium.transforms.ExtractNewRecordState",

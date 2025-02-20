@@ -13,6 +13,7 @@
         "database.trustServerCertificate": false,
 
         "decimal.handling.mode": "double",
+        "time.precision.mode": "connect",
 
         "topic.prefix": "mssql-source-avro",
         "database.history.kafka.bootstrap.servers": "broker:29092", 

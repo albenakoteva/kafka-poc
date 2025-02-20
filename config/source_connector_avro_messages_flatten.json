@@ -1,5 +1,5 @@
 {
-    "name": "source-mssql-json-flatten", 
+    "name": "source-mssql-avro-flatten", 
     "config": { 
         "connector.class": "io.debezium.connector.sqlserver.SqlServerConnector",
 
@@ -27,6 +27,7 @@
         "transforms.unwrap.drop.tombstones": false,
         "transforms.unwrap.delete.handling.mode": "rewrite",
 
+        "schema.registry.url": "http://schema-registry:8081",
         "value.converter": "io.confluent.connect.avro.AvroConverter",
         "value.converter.schemas.enable": true,
         "key.converter": "io.confluent.connect.avro.AvroConverter",

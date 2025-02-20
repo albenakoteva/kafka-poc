@@ -18,7 +18,7 @@
       "partition.duration.ms": "60000",
       "locale": "de_AT",
       "timezone": "UTC",
-
+      
       "confluent.topic.bootstrap.servers": "broker:29092",
       "confluent.topic.replication.factor": "1"
     }

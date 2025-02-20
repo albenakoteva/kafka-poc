@@ -21,6 +21,7 @@
 
         "table.include.list": "dbo.customers,dbo.orders",
         "decimal.handling.mode": "double",
+        "time.precision.mode": "connect",
 
         "value.converter": "org.apache.kafka.connect.json.JsonConverter",
         "value.converter.schemas.enable": true,

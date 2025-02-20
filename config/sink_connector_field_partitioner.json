@@ -1,5 +1,5 @@
 {
-    "name": "sink-blob-field-partitioner",
+    "name": "sink-field-partitioner-from-avro",
     "config": {
       "connector.class": "io.confluent.connect.azure.blob.AzureBlobStorageSinkConnector",
 
@@ -7,7 +7,7 @@
       "azblob.account.key": "${AZ_BLOB_ACCOUNT_KEY}",
       "azblob.container.name": "sink-data-field",
 
-      "topics": "mssql-source.sqldb.dbo.customers, mssql-source.sqldb.dbo.orders",
+      "topics": "mssql-source-avro-flatten.sqldb.dbo.customers, mssql-source-avro-flatten.sqldb.dbo.orders",
 
       "tasks.max": "1",
       "flush.size": "1",

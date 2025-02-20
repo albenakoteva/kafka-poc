@@ -27,9 +27,6 @@
         "transforms.unwrap.drop.tombstones": false,
         "transforms.unwrap.delete.handling.mode": "rewrite",
 
-        "schema.registry.url": "http://schema-registry:8081",
-        "value.converter": "io.confluent.connect.avro.AvroConverter",
         "value.converter.schemas.enable": true,
-        "key.converter": "io.confluent.connect.avro.AvroConverter",
         "key.converter.schemas.enable": true  } 
 }

@@ -19,7 +19,7 @@
         "schema.history.internal.kafka.bootstrap.servers": "broker:29092",  
         "schema.history.internal.kafka.topic": "schema-changes.inventory",
 
-        "table.include.list": "dbo.customers,dbo.orders",
+        "table.include.list": "poc.*",
         "decimal.handling.mode": "double",
         "time.precision.mode": "connect",
 

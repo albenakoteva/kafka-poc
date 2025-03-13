@@ -7,7 +7,7 @@
       "azblob.account.key": "${AZ_BLOB_ACCOUNT_KEY}",
       "azblob.container.name": "sink-data-time",
 
-      "topics": "mssql-source-avro-flatten.sqldb.dbo.customers, mssql-source-avro-flatten.sqldb.dbo.orders",
+      "topics": "mssql-source-avro-flatten.pocdb.poc.customers, mssql-source-avro-flatten.sqldb.poc.orders",
 
       "tasks.max": "1",
       "flush.size": "1",

@@ -12,7 +12,7 @@
         "database.server.name": "${MSSQL_DB_HOST}", 
         "database.trustServerCertificate": false,
 
-        "topic.prefix": "mssql-source-json",
+        "topic.prefix": "json-default",
         "database.history.kafka.bootstrap.servers": "broker:29092", 
         "database.history.kafka.topic": "schema-changes-topic",
         "errors.log.enable": "true",

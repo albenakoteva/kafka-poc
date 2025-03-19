@@ -1,39 +1,47 @@
+# Simple producer
 import requests
 import time
 import json
 import logging
 from quixstreams import Application
+# From file config.py import objects openweathermap_config, kafka_config
+from config import openweathermap_config, kafka_config
 
 def get_weather():
-    response = requests.get(
+    openweathermap_api_key=openweathermap_config["api_key"]
+    location=openweathermap_config["location"]
+    response=requests.get(
         "https://api.openweathermap.org/data/2.5/weather", 
         params={
-            "q": "Sofia,bg",
-            "APPID": "3dfe0e61125f9ddba9428d2f77f45faf"
+            "q":location,
+            "APPID":openweathermap_api_key,
         }
     )
 
     return response.json()
 
 def main():
+    broker_address = kafka_config["broker_address"]
+    topic_name = kafka_config["topic_name"]
     app = Application(
-        broker_address="localhost:9092",
+        broker_address=broker_address,
         loglevel="DEBUG"
     )
 
     with app.get_producer() as producer:
         #while True:
         i=1
-        while i<4:
+        while i<2:
             weather = get_weather()
             logging.debug("Got weather %s:", weather)
             producer.produce(
-                topic="openweathermap-data-demo",
+                topic=topic_name,
                 key="Sofia",
                 value=json.dumps(weather)
             )
             logging.info("Produced. Sleeping...")
-            time.sleep(70)
+            # sleep 10 seconds
+            time.sleep(10)
             i=i+1
 
 if __name__ == "__main__":

@@ -15,7 +15,7 @@
         "decimal.handling.mode": "double",
         "time.precision.mode": "connect",
 
-        "topic.prefix": "mssql-source-avro",
+        "topic.prefix": "avro-default",
         "database.history.kafka.bootstrap.servers": "broker:29092", 
         "database.history.kafka.topic": "schema-changes-topic",
         "errors.log.enable": "true",

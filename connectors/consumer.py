@@ -1,9 +1,14 @@
+# Simple consumer
 import json
 from quixstreams import Application
+# From file config.py import object openweathermap_config
+from config import kafka_config
 
 def main():
+    broker_address = kafka_config["broker_address"]
+    topic_name = kafka_config["topic_name"]
     app = Application(
-            broker_address="localhost:9092",
+            broker_address=broker_address,
             loglevel="DEBUG",
             consumer_group="openweathermap_reader",
             # start reading topic from the beggining:
@@ -13,7 +18,7 @@ def main():
         )
 
     with app.get_consumer() as consumer:
-        consumer.subscribe(["openweathermap-data-demo"])
+        consumer.subscribe([topic_name])
 
         while True:
             msg = consumer.poll(1)

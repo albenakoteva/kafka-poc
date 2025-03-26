@@ -79,6 +79,7 @@ services:
         confluent-hub install --no-prompt debezium/debezium-connector-sqlserver:2.4.2
         confluent-hub install --no-prompt confluentinc/kafka-connect-azure-blob-storage:1.6.24
         confluent-hub install --no-prompt confluentinc/kafka-connect-datagen:latest
+        confluent-hub install --no-prompt confluentinc/connect-transforms:latest
         #
         echo "Launching Kafka Connect worker"
         /etc/confluent/docker/run &

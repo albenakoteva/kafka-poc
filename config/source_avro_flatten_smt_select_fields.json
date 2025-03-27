@@ -1,0 +1,36 @@
+{
+    "name": "poc-smt-select-fields", 
+    "config": { 
+        "connector.class": "io.debezium.connector.sqlserver.SqlServerConnector",
+
+        "database.hostname": "${MSSQL_DB_HOST}", 
+        "database.port": "1433", 
+        "database.user": "${MSSQL_DB_USER}",
+        "database.password": "${MSSQL_DB_PASS}", 
+        "database.dbname": "${MSSQL_DB_NAME}", 
+        "database.names": "${MSSQL_DB_NAME}",
+        "database.server.name": "${MSSQL_DB_HOST}", 
+        "database.trustServerCertificate": false,
+
+        "topic.prefix": "poc-select-fields",
+        "database.history.kafka.bootstrap.servers": "broker:29092", 
+        "database.history.kafka.topic": "schema-changes-topic",
+        "errors.log.enable": "true",
+        "schema.history.internal.kafka.bootstrap.servers": "broker:29092",  
+        "schema.history.internal.kafka.topic": "schema-changes.inventory",
+
+        "table.include.list": "poc.orders",
+        "decimal.handling.mode": "double",
+        "time.precision.mode": "connect",
+
+        "transforms": "unwrap,selectFields",
+        "transforms.unwrap.type": "io.debezium.transforms.ExtractNewRecordState",
+        "transforms.unwrap.drop.tombstones": false,
+        "transforms.unwrap.delete.handling.mode": "rewrite",
+
+		"transforms.selectFields.type": "org.apache.kafka.connect.transforms.ReplaceField$Value",
+		"transforms.selectFields.include": "order_id,customer_id,country,item_number,item_name",
+
+        "value.converter.schemas.enable": true,
+        "key.converter.schemas.enable": true  } 
+}

@@ -1,0 +1,64 @@
+services:
+
+  broker:
+    image: confluentinc/cp-kafka:7.8.0
+    hostname: broker
+    container_name: broker
+    ports:
+      - "9092:9092"
+      - "9093:9093"
+      - "9101:9101"
+    volumes:
+      - /home/azureuser/kafka-security/kafka-creds:/etc/kafka/secrets
+    environment:
+      KAFKA_NODE_ID: 1
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: 'CONTROLLER:PLAINTEXT,PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT,SSL:SSL,HOST_SSL:SSL'
+      KAFKA_LISTENERS: 'CONTROLLER://broker:29094,PLAINTEXT://broker:29092,PLAINTEXT_HOST://0.0.0.0:9092,SSL://broker:29093,HOST_SSL://0.0.0.0:9093'
+      KAFKA_ADVERTISED_LISTENERS: 'PLAINTEXT://broker:29092,PLAINTEXT_HOST://localhost:9092,SSL://broker:29093,HOST_SSL://localhost:9093'
+      KAFKA_SSL_KEYSTORE_FILENAME: 'kafka.kafka.keystore.pkcs12'
+      KAFKA_SSL_KEYSTORE_CREDENTIALS: 'kafka_keystore_creds'
+      KAFKA_SSL_TRUSTSTORE_FILENAME: 'kafka.kafka.keystore.pkcs12'
+      KAFKA_SSL_TRUSTSTORE_CREDENTIALS: 'kafka_keystore_creds'
+      KAFKA_SSL_KEY_CREDENTIALS: 'kafka_sslkey_creds'
+      KAFKA_SSL_ENDPOINT_IDENTIFICATION_ALGORITHM: 'HTTPS'
+      KAFKA_SSL_CLIENT_AUTH: 'required'
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
+      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+      KAFKA_JMX_PORT: 9101
+      KAFKA_JMX_HOSTNAME: localhost
+      KAFKA_PROCESS_ROLES: 'broker,controller'
+      KAFKA_CONTROLLER_QUORUM_VOTERS: '1@broker:29094'
+      KAFKA_INTER_BROKER_LISTENER_NAME: 'PLAINTEXT'
+      KAFKA_CONTROLLER_LISTENER_NAMES: 'CONTROLLER'
+      KAFKA_LOG_DIRS: '/tmp/kraft-combined-logs'
+      # Replace CLUSTER_ID with a unique base64 UUID using "bin/kafka-storage.sh random-uuid"
+      # See https://docs.confluent.io/kafka/operations-tools/kafka-tools.html#kafka-storage-sh
+      CLUSTER_ID: 'MkU3OEVBNTcwNTJENDM2Qk'  
+
+  volumes:
+    data-zk-log-1:
+
+  schema-registry:
+    image: confluentinc/cp-schema-registry:7.8.0
+    hostname: schema-registry
+    container_name: schema-registry
+    depends_on:
+      - broker
+    ports:
+      - "8081:8081"
+    volumes:
+      - /home/azureuser/kafka-security/kafka-creds:/etc/schema-registry/secrets
+    environment:
+      SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS: 'broker:29093'
+      SCHEMA_REGISTRY_KAFKASTORE_SECURITY_PROTOCOL: 'SSL'
+      SCHEMA_REGISTRY_SSL_KEYSTORE_FILENAME: 'kafka.kafka.keystore.pkcs12'
+      SCHEMA_REGISTRY_SSL_KEYSTORE_CREDENTIALS: 'kafka_keystore_creds'
+      SCHEMA_REGISTRY_SSL_TRUSTSTORE_FILENAME: 'kafka.kafka.keystore.pkcs12'
+      SCHEMA_REGISTRY_SSL_TRUSTSTORE_CREDENTIALS: 'kafka_keystore_creds'
+      SCHEMA_REGISTRY_SSL_KEY_CREDENTIALS: 'kafka_sslkey_creds'
+      SCHEMA_REGISTRY_SSL_ENDPOINT_IDENTIFICATION_ALGORITHM: 'HTTPS'
+      SCHEMA_REGISTRY_HOST_NAME: schema-registry
+      SCHEMA_REGISTRY_LISTENERS: 'https://0.0.0.0:8081'
+
